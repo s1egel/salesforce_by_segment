@@ -155,7 +155,7 @@ view: historical_snapshot {
     description: "At the time of snapshot, what was the total projected ACV?"
     sql: ${amount} ;;
     value_format: "$#,##0"
-    drill_fields: [account.name, snapshot_date, close_date, amount, probability, stage_name_funnel]
+    drill_fields: [id, account.name, snapshot_date, close_date, amount, probability, stage_name_funnel]
   }
 
   measure: count_opportunities {

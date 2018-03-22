@@ -51,6 +51,11 @@ view: sfbase__accounts {
     sql: ${TABLE}.last_viewed_date ;;
   }
 
+  dimension: name {
+    type: string
+    sql: ${TABLE}.name ;;
+  }
+
   dimension: owner_id {
     type: string
     sql: ${TABLE}.owner_id ;;
