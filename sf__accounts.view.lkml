@@ -34,7 +34,7 @@ view: sf__accounts {
     type: count
 
     filters: {
-      field: sf__accounts.type
+      field: type
       value: "\"Customer\""
     }
   }

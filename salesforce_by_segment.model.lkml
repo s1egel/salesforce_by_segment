@@ -6,6 +6,9 @@ include: "sfbase__*.view"
 # include extended views
 include: "sf__*.view"
 
+# include history extension views
+include: "sfhistory__*.view"
+
 # include the dashboards
 include: "sf__*.dashboard"
 
@@ -139,5 +142,38 @@ explore: sf__users {
     type: left_outer
     sql_on: ${sf__users_opportunities.id} = ${sf__users.id} ;;
     relationship: one_to_one
+  }
+}
+
+explore: historical_snapshot {
+  label: "Historical Opportunity Snapshot"
+
+  join: opportunity {
+    from: sf__opportunities
+    view_label: "Current Opportunity State"
+    type: inner
+    relationship: many_to_one
+    sql_on: ${historical_snapshot.opportunity_id} = ${opportunity.id} ;;
+  }
+
+  join: account {
+    from: sf__accounts
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${opportunity.account_id} = ${account.id} ;;
+  }
+
+  join: opportunity_facts {
+    view_label: "Account"
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${opportunity.account_id} = ${opportunity_facts.account_id} ;;
+  }
+
+  join: account_owner {
+    from: sf__users
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${account.owner_id} = ${account_owner.id} ;;
   }
 }
