@@ -12,6 +12,7 @@ view: historical_snapshot {
       on cast(dates.date as date) >= cast(snapshot_window.created_date as date)
       and cast(dates.date as date) <= cast(snapshot_window.stage_end as date)
       where dates.date <= current_date
+      and CAST(amount AS FLOAT64) <= 1000000
  ;;
   }
 
