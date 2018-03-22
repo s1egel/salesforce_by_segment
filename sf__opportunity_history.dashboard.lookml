@@ -79,5 +79,3 @@
     x_axis_scale: auto
     point_style: none
     interpolation: step
-
-

@@ -254,5 +254,5 @@
     show_x_axis_ticks: true
     x_axis_scale: auto
     y_axis_orientation: [right]
-    x_axis_label_rotation: 0
+    x_axis_label_rotation: 45
     show_null_labels: false

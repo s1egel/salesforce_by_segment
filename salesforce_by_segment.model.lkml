@@ -91,6 +91,7 @@ explore: sf__leads {
 }
 
 explore: sf__opportunities {
+  fields: [ALL_FIELDS*]
   sql_always_where: NOT ${sf__opportunities.is_deleted} ;;
 
   join: sf__accounts {
@@ -115,6 +116,11 @@ explore: sf__opportunities {
     sql_on: ${sf__opportunities.owner_id} = ${opportunity_owners.id} ;;
     relationship: many_to_one
   }
+
+  join: sf__users_opportunities {
+    relationship: many_to_one
+    sql_on: ${sf__opportunities.owner_id} = ${sf__users_opportunities.id} ;;
+  }
 }
 
 #- explore: sf__opportunity_field_history
@@ -132,6 +138,7 @@ explore: sf__tasks {
 }
 
 explore: sf__users {
+  fields: [-sf__users.rep_comparitor]
   join: sf__opportunities {
     type: left_outer
     sql_on: ${sf__opportunities.owner_id} = ${sf__users_opportunities.id} ;;
@@ -147,6 +154,7 @@ explore: sf__users {
 
 explore: historical_snapshot {
   label: "Historical Opportunity Snapshot"
+  fields: [ALL_FIELDS*, -account_owner.rep_comparitor]
 
   join: opportunity {
     from: sf__opportunities
