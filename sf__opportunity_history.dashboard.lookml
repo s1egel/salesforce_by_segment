@@ -56,7 +56,7 @@
     measures: [historical_snapshot.total_amount]
     filters:
       historical_snapshot.snapshot_date: 365 days
-      historical_snapshot.stage_name_funnel: -Won,-Lost,-Unknown
+      # historical_snapshot.stage_name_funnel: -Won,-Lost,-Unknown
     sorts: [historical_snapshot.snapshot_date desc, historical_snapshot.stage_name_funnel desc,
       historical_snapshot.stage_name_funnel__sort_]
     limit: 500
