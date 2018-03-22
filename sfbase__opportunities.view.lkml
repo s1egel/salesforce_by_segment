@@ -92,6 +92,11 @@ view: sfbase__opportunities {
     sql: ${TABLE}.plan_c ;;
   }
 
+  dimension: probability {
+    type: number
+    sql: ${TABLE}.probability ;;
+  }
+
   dimension_group: received {
     type: time
     timeframes: [time, date, week, month]
@@ -105,7 +110,12 @@ view: sfbase__opportunities {
 
   dimension: total_value_c {
     type: number
-    sql: ${TABLE}.total_value_c ;;
+    sql: CAST(${TABLE}.arr_c AS FLOAT64) ;;
+  }
+
+  dimension: type {
+    type: string
+    sql: ${TABLE}.type ;;
   }
 
   dimension: upsell_c {

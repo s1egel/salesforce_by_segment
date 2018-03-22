@@ -33,7 +33,7 @@
     type: single_value
     model: salesforce_by_segment
     explore: sf__opportunities
-    measures: [sf__opportunities.total_value_c]
+    measures: [sf__opportunities.total_revenue]
     filters:
       sf__opportunities.close_quarter: this quarter
       sf__opportunities.stage_name: '"Closed Won"'

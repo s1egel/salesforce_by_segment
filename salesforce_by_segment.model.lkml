@@ -1,4 +1,4 @@
-connection: "segment_sources"
+connection: "big_query_push"
 
 # include base (generated) views
 include: "sfbase__*.view"

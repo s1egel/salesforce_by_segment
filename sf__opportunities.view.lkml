@@ -7,15 +7,39 @@ view: sf__opportunities {
     sql: ${is_closed} AND NOT ${is_won} ;;
   }
 
-  #  - dimension: probability_group
-  #    sql_case:
-  #      'Won': ${probability} = 100
-  #      'Above 80%': ${probability} > 80
-  #      '60 - 80%': ${probability} > 60
-  #      '40 - 60%': ${probability} > 40
-  #      '20 - 40%': ${probability} > 20
-  #      'Under 20%': ${probability} > 0
-  #      'Lost': ${probability} = 0
+  dimension: probability_group {
+    type: string
+    case: {
+      when: {
+        label: "Won"
+        sql: ${probability} = 100;;
+        }
+      when: {
+        label: "Above 80%"
+        sql: ${probability} > 80;;
+        }
+      when: {
+        label: "60 - 80%"
+        sql: ${probability} > 60;;
+        }
+      when: {
+        label: "40 - 60%"
+        sql: ${probability} > 40;;
+        }
+      when: {
+        label: "20 - 40%"
+        sql: ${probability} > 20;;
+        }
+      when: {
+        label: "Under 20%"
+        sql: ${probability} > 0;;
+        }
+      when: {
+        label: "Lost"
+        sql: ${probability} = 0;;
+        }
+    }
+  }
 
   dimension: created_raw {
     type:  date_raw
@@ -156,19 +180,29 @@ view: sf__opportunities {
     sql: 100.00 * ${count_open} / NULLIF(${count}, 0) ;;
     value_format: "#0.00\%"
   }
+
+
+## For use with opportunities.type
+  measure: count_new_business_won {
+    type: count
+    filters: {
+      field: is_won
+      value: "yes"
+    }
+    filters: {
+      field: type
+      value: "New Business"
+    }
+   drill_fields: [sf__opportunity.id, sf__account.id, type]
+  }
+
+# For use with opportunities.type
+  measure: count_new_business {
+   type: count
+   filters: {
+      field: type
+      value: "New Business"
+    }
+   drill_fields: [sf__opportunity.id, sd__account.name, type]
+  }
 }
-
-## For use with opportunities.type
-#  - measure: count_new_business_won
-#    type: count
-#    filters:
-#      is_won: Yes
-#      sf__opportunity.type: '"New Business"'
-#    drill_fields: [sf__opportunity.id, sf__account.id, type]
-
-## For use with opportunities.type
-#  - measure: count_new_business
-#    type: count
-#    filters:
-#      sf__opportunity.type: '"New Business"'
-#    drill_fields: [sf__opportunity.id, sd__account.name, type]

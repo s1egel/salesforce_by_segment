@@ -80,7 +80,7 @@
     type: looker_column
     model: salesforce_by_segment
     explore: sf__leads
-    measures: [sf__leads.count] #, sf__opportunities.count_new_business, sf__opportunities.count_new_business_won]
+    measures: [sf__leads.count, sf__opportunities.count_new_business, sf__opportunities.count_new_business_won]
     filters:
       sf__leads.status: -%Unqualified%
     listen:
@@ -121,7 +121,7 @@
     model: salesforce_by_segment
     explore: sf__leads
     dimensions: [sf__leads.created_month]
-    measures: [sf__leads.count] #, sf__opportunities.count_new_business, sf__opportunities.count_new_business_won]
+    measures: [sf__leads.count, sf__opportunities.count_new_business, sf__opportunities.count_new_business_won]
     filters:
       sf__leads.status: -%Unqualified%
     listen:
