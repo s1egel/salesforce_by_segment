@@ -29,6 +29,7 @@
       sales_rep: opportunity_owners.name
     filters:
       sf__opportunities.close_date: 'this quarter'
+      sf__opportunities.is_won: 'yes'
     limit: 500
     font_size: small
     text_color: '#49719a'
@@ -46,6 +47,7 @@
       sales_rep: opportunity_owners.name
     filters:
       sf__opportunities.close_date: 'this quarter'
+      sf__opportunities.is_won: 'yes'
     limit: 500
     font_size: small
     text_color: '#49719a'

@@ -14,8 +14,8 @@
     pivots: [historical_snapshot.probability_tier]
     measures: [historical_snapshot.total_amount]
     filters:
-      historical_snapshot.close_date: 2015/10/01 to 2016/01/01
-      historical_snapshot.snapshot_date: 2015/04/01 to 2016/01/01
+      historical_snapshot.close_date: 365 days
+      historical_snapshot.snapshot_date: 365 days
       historical_snapshot.stage_name_funnel: Won,Winning,Trial,Prospect
     sorts: [historical_snapshot.snapshot_date, historical_snapshot.snapshot_month desc,
       historical_snapshot.close_month, historical_snapshot.stage_name_funnel__sort_,

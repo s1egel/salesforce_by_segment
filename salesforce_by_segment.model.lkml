@@ -155,6 +155,7 @@ explore: sf__users {
 explore: historical_snapshot {
   label: "Historical Opportunity Snapshot"
   fields: [ALL_FIELDS*, -account_owner.rep_comparitor]
+  sql_always_where: ${opportunity.id} != '0061a00000MGasbAAD' ;;
 
   join: opportunity {
     from: sf__opportunities
