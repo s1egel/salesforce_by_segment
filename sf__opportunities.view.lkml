@@ -127,7 +127,7 @@ view: sf__opportunities {
       value: "Yes"
     }
 
-    drill_fields: [sf__opportunity.id, sf__account.id]
+    drill_fields: [id, sf_accounts.name, opportunity_owners.name, created_date, close_date, total_revenue]
   }
 
   measure: average_days_open {
@@ -166,7 +166,7 @@ view: sf__opportunities {
       value: "No"
     }
 
-    drill_fields: [sf__opportunity.id, sd__account.id]
+    drill_fields: [id, sf_accounts.name, opportunity_owners.name, created_date, close_date, total_revenue]
   }
 
   measure: win_percentage {
@@ -193,7 +193,7 @@ view: sf__opportunities {
       field: type
       value: "New Business"
     }
-   drill_fields: [sf__opportunity.id, sf__account.id, type]
+    drill_fields: [id, sf_accounts.name, opportunity_owners.name, created_date, close_date, total_revenue]
   }
 
 # For use with opportunities.type
@@ -203,6 +203,6 @@ view: sf__opportunities {
       field: type
       value: "New Business"
     }
-   drill_fields: [sf__opportunity.id, sd__account.name, type]
+    drill_fields: [id, sf_accounts.name, opportunity_owners.name, type, created_date, close_date, total_revenue]
   }
 }
